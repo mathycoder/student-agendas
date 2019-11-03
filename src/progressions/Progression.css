@@ -5,5 +5,21 @@
 }
 
 .progression {
+  padding: 10px;
   border: 1px solid black;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.progression .progression-item {
+  width: 250px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.progression .progression-item h4 {
+  display: inline;
 }

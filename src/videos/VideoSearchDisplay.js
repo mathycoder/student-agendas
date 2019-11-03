@@ -40,6 +40,7 @@ class VideoSearchDisplay extends Component {
         </h6>
         <iframe id="player" type="text/html" width="400" height="250" src={url} frameBorder="0"></iframe>
         <p>{video.snippet.description}</p>
+        <button onClick={(event) => this.props.addToProgression(video)}>Add to Progression</button>
       </div>
     )
   }

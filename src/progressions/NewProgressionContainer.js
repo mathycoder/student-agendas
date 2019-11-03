@@ -5,11 +5,22 @@ import './Progression.css';
 
 class NewProgressionContainer extends Component {
 
+  state = {
+    currProgression: []
+  }
+
+  addToProgression = (video) => {
+    debugger
+    this.setState({
+      currProgression: [...this.state.currProgression, video]
+    })
+  }
+
   render(){
     return (
       <div className="new-progression-container">
-        <Progression />
-        <VideoSearchContainer />
+        <Progression currProgression={this.state.currProgression} />
+        <VideoSearchContainer addToProgression={this.addToProgression} />
       </div>
     )
   }

@@ -43,7 +43,7 @@ class VideoSearchContainer extends Component {
             />
           <input type="submit" value="Search"/>
         </form>
-        <VideoSearchDisplay videos={this.state.videos}/>
+        <VideoSearchDisplay addToProgression={this.props.addToProgression} videos={this.state.videos}/>
       </div>
     )
   }

@@ -3,10 +3,26 @@ import './Progression.css';
 
 class Progression extends Component {
 
+  displayProgression = () => {
+    return (
+      this.props.currProgression.map(video => {
+        const parser = new DOMParser
+        let title = parser.parseFromString('<!doctype html><body>' + video.snippet.title, 'text/html')
+        title = title.body.textContent
+        return (
+          <div className="progression-item">
+            <h4>{title}</h4>
+            <img width="200px" src={video.snippet.thumbnails.medium.url} />
+          </div>
+        )
+      })
+    )
+  }
+
   render(){
     return (
       <div className="progression">
-        Current Progression
+        {this.displayProgression()}
       </div>
     )
   }
