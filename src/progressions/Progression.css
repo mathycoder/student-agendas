@@ -1,0 +1,9 @@
+.new-progression-container {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 200px 400px;
+}
+
+.progression {
+  border: 1px solid black;
+}
