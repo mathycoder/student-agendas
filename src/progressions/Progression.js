@@ -11,8 +11,8 @@ class Progression extends Component {
         title = title.body.textContent
         return (
           <div className="progression-item">
-            <h4>{title}</h4>
-            <img width="200px" src={video.snippet.thumbnails.medium.url} />
+            <h4>{title}</h4><br/>
+            <img width="180px" src={video.snippet.thumbnails.medium.url} />
           </div>
         )
       })

@@ -13,6 +13,7 @@
 
 .progression .progression-item {
   width: 250px;
+  min-width: 250px;
   border: 1px solid black;
   padding: 10px;
   border-radius: 25px;

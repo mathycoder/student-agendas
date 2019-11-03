@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import './VideoSearch.css';
 
 class VideoSearchDisplay extends Component {
-
   state = {
     videoIndex: ""
-  }
-
-  componentDidUpdate(){
-    console.log(this.props.videos)
   }
 
   displayDate = () => {

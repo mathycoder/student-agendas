@@ -6,7 +6,6 @@ const URL1 = 'https://www.googleapis.com/youtube/v3/search'
 const URL2 = `?key=${YOUTUBE_API_KEY}&part=snippet&safeSearch=strict&type=video&videoEmbeddable=true&maxResults=50`
 
 class VideoSearchContainer extends Component {
-
   state = {
     videos: [],
     searchTerm: ""
@@ -21,7 +20,6 @@ class VideoSearchContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.searchTerm)
     fetch(URL1 + URL2 + `&q=${this.state.searchTerm}`)
       .then(resp => resp.json())
       .then(json => {
