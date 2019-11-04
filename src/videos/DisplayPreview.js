@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './VideoSearch.css';
 
 function displayDate(video){
@@ -11,7 +11,7 @@ function displayDate(video){
 }
 
 function displayTitle(video) {
-  const parser = new DOMParser
+  const parser = new DOMParser()
   let title = parser.parseFromString('<!doctype html><body>' + video.snippet.title, 'text/html')
   return title.body.textContent
 }
@@ -24,7 +24,7 @@ const DisplayPreview = (props) => {
       <h6>
         Created by {props.video.snippet.channelTitle} on {displayDate(props.video)}
       </h6>
-      <iframe id="player" type="text/html" width="400" height="250" src={url} frameBorder="0"></iframe>
+      <iframe title="video preview" id="player" type="text/html" width="400" height="250" src={url} frameBorder="0"></iframe>
       <p>{props.video.snippet.description}</p>
       <button onClick={(event) => props.addToProgression(props.video)}>Add to Progression</button>
     </div>

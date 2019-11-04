@@ -1,7 +1,7 @@
 .new-progression-container {
   padding: 20px;
   display: grid;
-  grid-template-rows: 200px 400px;
+  grid-template-rows: 180px 50px 400px;
 }
 
 .progression {
@@ -23,4 +23,27 @@
 
 .progression .progression-item h4 {
   display: inline;
+}
+
+.progression-menu-bar ul {
+  display: flex;
+  list-style-type: none;
+  margin-left: -40px;
+}
+
+.progression-menu-bar ul li {
+  padding: 2px 10px;
+  margin-right: 20px;
+  border: 1px black solid;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.progression-menu-bar ul li:hover {
+  background-color: gray;
+}
+
+.progression-menu-bar .selected {
+  background-color: gray;
 }

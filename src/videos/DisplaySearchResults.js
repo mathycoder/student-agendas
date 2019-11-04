@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './VideoSearch.css';
 
 function formatTitle(unformattedTitle){
-  const parser = new DOMParser
+  const parser = new DOMParser()
   const title = parser.parseFromString('<!doctype html><body>' + unformattedTitle, 'text/html')
   return title.body.textContent
 }
@@ -15,7 +15,7 @@ const DisplaySearchResults = (props) => {
         return (
           <div className="search-video" key={index} onClick={(event) => props.handleVideoClick(index)}>
             <h4>{title}</h4>
-            <img src={video.snippet.thumbnails.medium.url} />
+            <img alt="searched video result" src={video.snippet.thumbnails.medium.url} />
             <p>{video.snippet.description}</p>
           </div>
         )
