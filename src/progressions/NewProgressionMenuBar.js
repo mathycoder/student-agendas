@@ -5,7 +5,7 @@ const NewProgressionMenuBar = (props) => {
     <div className="progression-menu-bar">
       <ul>
         <li onClick={props.handleMenuClick} className={props.menuSelect === "Add YouTube Video" ? "selected" : ''}>Add YouTube Video</li>
-        <li onClick={props.handleMenuClick} className={props.menuSelect === "Edit Progression" ? "selected" : ''}>Edit Progression</li>
+        {props.progressionEmpty() ? '' : <li onClick={props.handleMenuClick} className={props.menuSelect === "Edit Progression" ? "selected" : ''}>Edit Progression</li>}
       </ul>
     </div>
   )

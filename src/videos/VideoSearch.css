@@ -11,6 +11,10 @@
   overflow: scroll;
 }
 
+.search-video-preview {
+  max-width: 500px;
+}
+
 .search-video-preview h4, .search-video-preview h6  {
   display: inline;
 }

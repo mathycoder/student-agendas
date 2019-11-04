@@ -24,9 +24,11 @@ const DisplayPreview = (props) => {
       <h6>
         Created by {props.video.snippet.channelTitle} on {displayDate(props.video)}
       </h6>
+      <br/>
       <iframe title="video preview" id="player" type="text/html" width="400" height="250" src={url} frameBorder="0"></iframe>
       <p>{props.video.snippet.description}</p>
-      <button onClick={(event) => props.addToProgression(props.video)}>Add to Progression</button>
+      {props.addToProgression ? <button onClick={(event) => props.addToProgression(props.video)}>Add to Progression</button> : ''}
+      {props.removeFromProgression ? <button onClick={(event) => props.removeFromProgression(props.video)}>Remove from Progression</button> : ''}
     </div>
   )
 }
