@@ -10,7 +10,6 @@ class NewProgressionContainer extends Component {
   }
 
   addToProgression = (video) => {
-    debugger
     this.setState({
       currProgression: [...this.state.currProgression, video]
     })

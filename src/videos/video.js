@@ -1,5 +1,0 @@
-class Video {
-  constructor(attributes){
-
-  }
-}

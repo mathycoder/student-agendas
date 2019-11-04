@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import VideoSearchDisplay from './VideoSearchDisplay'
+import DisplaySearchResults from './DisplaySearchResults'
+import DisplayPreview from './DisplayPreview'
 
 const YOUTUBE_API_KEY = 'AIzaSyB5XRdK1vbRRW-XUG7yKe1V5GH86KAOuJ4'
 const URL1 = 'https://www.googleapis.com/youtube/v3/search'
@@ -8,7 +9,8 @@ const URL2 = `?key=${YOUTUBE_API_KEY}&part=snippet&safeSearch=strict&type=video&
 class VideoSearchContainer extends Component {
   state = {
     videos: [],
-    searchTerm: ""
+    searchTerm: "",
+    videoIndex: ''
   }
 
   handleChange = (event) => {
@@ -30,6 +32,14 @@ class VideoSearchContainer extends Component {
       })
   }
 
+  handleVideoClick = (index) => {
+    this.setState({
+      ...this.state,
+      videos: [...this.state.videos],
+      videoIndex: index
+    })
+  }
+
   render() {
     return (
       <div className="searched-videos-display">
@@ -41,11 +51,13 @@ class VideoSearchContainer extends Component {
             />
           <input type="submit" value="Search"/>
         </form>
-        <VideoSearchDisplay addToProgression={this.props.addToProgression} videos={this.state.videos}/>
+        <div className="search-videos-container">
+          <DisplaySearchResults handleVideoClick={this.handleVideoClick} videos={this.state.videos}/>
+          {this.state.videoIndex !== "" ? <DisplayPreview addToProgression={this.props.addToProgression} video={this.state.videos[this.state.videoIndex]}/> : ''}
+        </div>
       </div>
     )
   }
-
 }
 
 export default VideoSearchContainer
