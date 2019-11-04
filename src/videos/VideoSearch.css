@@ -6,33 +6,44 @@
 .search-videos {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  height: 400px;
+  height: 360px;
   overflow: scroll;
+  margin-top: 10px;
+}
+
+.search-video {
+  width: 200px;
+  height: 220px;
+  justify-content: center;
+  margin-right: 7px;
+  margin-bottom: 20px;
+}
+
+.search-video .title-text {
+  font-size: 14px;
+  font-weight: bold;
+  height: 35px;
+  overflow: hidden;
+}
+
+.search-video .creator-text {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.search-video .created-date {
+  font-size: 12px;
+}
+
+.search-video img {
+  width: 200px;
 }
 
 .search-video-preview {
   max-width: 500px;
+  margin-top: 10px;
 }
 
 .search-video-preview h4, .search-video-preview h6  {
   display: inline;
-}
-
-.search-video {
-  width: 250px;
-  border: 1px solid black;
-  padding: 0 20px;
-  justify-content: center;
-  border-radius: 10px;
-  margin: 10px;
-  overflow: hidden;
-}
-
-.search-video img {
-  width: 250px;
-}
-
-.search-video p {
-  font-size: 12px;
 }
