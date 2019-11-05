@@ -10,23 +10,25 @@ class NewProgressionContainer extends Component {
   state = {
     currProgression: [],
     menuSelect: "Add YouTube Video",
-    selectedIndex: "",
-    draggedItem: {}
+    selectedIndex: ""
   }
 
   handleDragOver = event => {
     event.preventDefault()
-    console.log("drag over event!")
+    document.querySelector('.progression').classList.add("drag-over-progression")
+  }
+
+  handleDragLeave = event => {
+    event.preventDefault()
+    document.querySelector('.progression').classList.remove("drag-over-progression")
   }
 
   handleDragStart = (event, video) => {
-    console.log("DRAG START")
     let data = JSON.stringify(video)
     event.dataTransfer.setData("video", data)
   }
 
   handleOnDrop = (event) => {
-    console.log("DROPPED")
     let video = event.dataTransfer.getData("video")
     video = JSON.parse(video)
     this.setState({
@@ -34,6 +36,7 @@ class NewProgressionContainer extends Component {
       currProgression: [...this.state.currProgression, video],
       draggedItem: {...this.state.draggedItem}
     })
+    document.querySelector('.progression').classList.remove("drag-over-progression")
   }
 
   addToProgression = (video) => {
@@ -79,7 +82,7 @@ class NewProgressionContainer extends Component {
   render(){
     return (
       <div className="new-progression-container">
-        <Progression currProgression={this.state.currProgression} handleProgressionItemClick={this.handleProgressionItemClick} handleDragOver={this.handleDragOver} handleOnDrop={this.handleOnDrop} />
+        <Progression removeFromProgression={this.removeFromProgression} currProgression={this.state.currProgression} handleProgressionItemClick={this.handleProgressionItemClick} handleDragOver={this.handleDragOver} handleDragLeave={this.handleDragLeave} handleOnDrop={this.handleOnDrop} />
         <NewProgressionMenuBar handleMenuClick={this.handleMenuClick} menuSelect={this.state.menuSelect} progressionEmpty={this.progressionEmpty}/>
         {this.state.menuSelect === "Edit Progression" && this.state.selectedIndex !== '' ? <DisplayPreview video={this.state.currProgression[this.state.selectedIndex]} removeFromProgression={this.removeFromProgression}/> : ''}
         {this.state.menuSelect === "Add YouTube Video" ? <VideoSearchContainer addToProgression={this.addToProgression} handleDragStart={this.handleDragStart} /> : ''}

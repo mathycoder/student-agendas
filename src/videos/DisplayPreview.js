@@ -19,7 +19,7 @@ function displayTitle(video) {
 const DisplayPreview = (props) => {
   const url = 'http://www.youtube.com/embed/' + props.video.id.videoId
   return (
-    <div className="search-video-preview">
+    <div className="search-video-preview" >
       <h4>{displayTitle(props.video)}</h4><br />
       <h6>
         Created by {props.video.snippet.channelTitle} on {displayDate(props.video)}

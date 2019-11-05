@@ -10,9 +10,13 @@ class Progression extends Component {
         let title = parser.parseFromString('<!doctype html><body>' + video.snippet.title, 'text/html')
         title = title.body.textContent
         return (
-          <div className="progression-item" onClick={event => this.props.handleProgressionItemClick(index)}>
-            <h4>{title}</h4><br/>
-            <img width="180px" src={video.snippet.thumbnails.medium.url} alt="learning video" />
+          <div>
+            <div className="x-out" onClick={(event) => this.props.removeFromProgression(video)}>x</div>
+            <div className="progression-item" onClick={event => this.props.handleProgressionItemClick(index)}>
+              <img width="180px" src={video.snippet.thumbnails.medium.url} alt="learning video" />
+              <br/>
+              <div className="progression-item-title">{title}</div>
+            </div>
           </div>
         )
       })
@@ -21,7 +25,7 @@ class Progression extends Component {
 
   render(){
     return (
-      <div className="progression" onDragOver={this.props.handleDragOver} onDrop={this.props.handleOnDrop} >
+      <div className="progression" onDragOver={this.props.handleDragOver} onDragLeave={this.props.handleDragLeave} onDrop={this.props.handleOnDrop} >
         {this.displayProgression()}
       </div>
     )

@@ -12,13 +12,49 @@
 }
 
 .progression .progression-item {
-  width: 250px;
-  min-width: 250px;
+  width: 200px;
+  min-width: 200px;
   border: 1px solid black;
   padding: 10px;
   border-radius: 25px;
   text-align: center;
   margin-left: 10px;
+  margin-top: -15px;
+}
+
+.progression .progression-item:hover {
+  border: 1px gray solid;
+  cursor: pointer;
+}
+
+.progression .progression-item .progression-item-title {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  height: 35px;
+  overflow: hidden;
+}
+
+.progression-item img {
+
+}
+
+.x-out {
+  display: inline;
+  position: relative;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 0px 4px;
+  color: white;
+  background-color: rgb(234, 130, 120);
+  border-radius: 3px;
+  left: 5px;
+  bottom: 5px;
+}
+
+.x-out:hover {
+  background-color: rgb(235, 81, 66);
+  cursor: pointer;
 }
 
 .progression .progression-item h4 {
@@ -46,4 +82,9 @@
 
 .progression-menu-bar .selected {
   background-color: gray;
+}
+
+.drag-over-progression {
+  border: 3px gray solid;
+  padding: 8px;
 }
