@@ -22,7 +22,7 @@ const DisplaySearchResults = (props) => {
       {props.videos.slice(0,24).map((video, index) => {
         const title = formatTitle(video.snippet.title)
         return (
-          <div className="search-video" key={index} onClick={(event) => props.handleVideoClick(index)}>
+          <div draggable onDragStart={event => props.handleDragStart(event, video)} className="search-video" key={index} onClick={(event) => props.handleVideoClick(index)}>
             <img alt="searched video result" src={video.snippet.thumbnails.medium.url} />
             <div className="title-text">{title}</div>
             <div className="creator-text">by {video.snippet.channelTitle}</div>

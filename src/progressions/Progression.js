@@ -21,7 +21,7 @@ class Progression extends Component {
 
   render(){
     return (
-      <div className="progression">
+      <div className="progression" onDragOver={this.props.handleDragOver} onDrop={this.props.handleOnDrop} >
         {this.displayProgression()}
       </div>
     )

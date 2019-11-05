@@ -52,7 +52,7 @@ class VideoSearchContainer extends Component {
           <input type="submit" value="Search"/>
         </form>
         <div className="search-videos-container">
-          <DisplaySearchResults handleVideoClick={this.handleVideoClick} videos={this.state.videos}/>
+          <DisplaySearchResults handleDragStart={this.props.handleDragStart} handleVideoClick={this.handleVideoClick} videos={this.state.videos}/>
           {this.state.videoIndex !== "" ? <DisplayPreview addToProgression={this.props.addToProgression} video={this.state.videos[this.state.videoIndex]}/> : ''}
         </div>
       </div>
