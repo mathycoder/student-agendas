@@ -4,6 +4,7 @@ import NewProgressionMenuBar from './NewProgressionMenuBar'
 import Progression from './Progression'
 import DisplayPreview from '../videos/DisplayPreview'
 import './Progression.css';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class NewProgressionContainer extends Component {
 
@@ -79,10 +80,32 @@ class NewProgressionContainer extends Component {
     return this.state.currProgression.length > 0 ? false : true
   }
 
+  handleDNDDragEnd = result => {
+    // TODO: update the order in the state!
+  }
+
   render(){
     return (
       <div className="new-progression-container">
-        <Progression removeFromProgression={this.removeFromProgression} currProgression={this.state.currProgression} handleProgressionItemClick={this.handleProgressionItemClick} handleDragOver={this.handleDragOver} handleDragLeave={this.handleDragLeave} handleOnDrop={this.handleOnDrop} />
+        <DragDropContext
+          onDragEnd={this.handleDNDDragEnd}>
+          <Droppable droppableId="droppable-1">
+            {(provided) => (
+              <Progression
+                innerRef={provided.innerRef}
+                {...provided.droppableProps}
+                removeFromProgression={this.removeFromProgression}
+                currProgression={this.state.currProgression}
+                handleProgressionItemClick={this.handleProgressionItemClick}
+                handleDragOver={this.handleDragOver}
+                handleDragLeave={this.handleDragLeave}
+                handleOnDrop={this.handleOnDrop}>
+                {provided.placeholder}
+              </Progression>
+            )}
+          </Droppable>
+        </DragDropContext>
+
         <NewProgressionMenuBar handleMenuClick={this.handleMenuClick} menuSelect={this.state.menuSelect} progressionEmpty={this.progressionEmpty}/>
         {this.state.menuSelect === "Edit Progression" && this.state.selectedIndex !== '' ? <DisplayPreview video={this.state.currProgression[this.state.selectedIndex]} removeFromProgression={this.removeFromProgression}/> : ''}
         {this.state.menuSelect === "Add YouTube Video" ? <VideoSearchContainer addToProgression={this.addToProgression} handleDragStart={this.handleDragStart} /> : ''}
