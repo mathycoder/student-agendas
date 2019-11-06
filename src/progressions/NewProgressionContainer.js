@@ -70,7 +70,7 @@ class NewProgressionContainer extends Component {
     this.setState({
       ...this.state,
       currProgression: this.state.currProgression.filter(item => item !== movie),
-      menuSelect: "",
+      menuSelect: "Add YouTube Video",
       selectedIndex: ""
     })
   }

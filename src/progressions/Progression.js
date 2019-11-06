@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Progression.css';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class Progression extends Component {
 

@@ -17,6 +17,7 @@
   justify-content: center;
   margin-right: 7px;
   margin-bottom: 20px;
+  cursor: grab;
 }
 
 .search-video .title-text {
