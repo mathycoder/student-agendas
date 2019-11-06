@@ -7,6 +7,9 @@ import './Progression.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class NewProgressionContainer extends Component {
+  setProgRef = (ref) => {
+    this.progRef = ref
+  }
 
   state = {
     currProgression: [],
@@ -89,7 +92,7 @@ class NewProgressionContainer extends Component {
       <div className="new-progression-container">
         <DragDropContext
           onDragEnd={this.handleDNDDragEnd}>
-          <Droppable droppableId="droppable-1">
+          <Droppable droppableId="droppable-1" direction="horizontal">
             {(provided) => (
               <Progression
                 innerRef={provided.innerRef}
@@ -100,7 +103,7 @@ class NewProgressionContainer extends Component {
                 handleDragOver={this.handleDragOver}
                 handleDragLeave={this.handleDragLeave}
                 handleOnDrop={this.handleOnDrop}>
-                {provided.placeholder}
+                  {provided.placeholder}
               </Progression>
             )}
           </Droppable>
