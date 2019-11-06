@@ -7,10 +7,6 @@ import './Progression.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class NewProgressionContainer extends Component {
-  setProgRef = (ref) => {
-    this.progRef = ref
-  }
-
   state = {
     currProgression: [],
     menuSelect: "Add YouTube Video",
@@ -84,7 +80,21 @@ class NewProgressionContainer extends Component {
   }
 
   handleDNDDragEnd = result => {
-    // TODO: update the order in the state!
+    const { destination, source, draggableId } = result
+    if (!destination) {
+      return
+    } 
+
+    if (destination.index !== source.index) {
+      const testArray = [...this.state.currProgression]
+      testArray.splice(source.index, 1)
+      testArray.splice(destination.index, 0, this.state.currProgression[source.index])
+      this.setState({
+        ...this.state,
+        currProgression: testArray
+      })
+    }
+
   }
 
   render(){

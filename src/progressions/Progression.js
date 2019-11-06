@@ -4,10 +4,6 @@ import ProgressionItem from './ProgressionItem'
 import { Draggable } from 'react-beautiful-dnd'
 
 class Progression extends Component {
-  setProgItemRef = (ref) => {
-    this.progRef = ref
-  }
-
   displayProgression = () => {
     return (
       this.props.currProgression.map((video, index) => {
