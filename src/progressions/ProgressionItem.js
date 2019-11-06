@@ -7,7 +7,7 @@ const ProgressionItem = (props) => {
   return (
     <div ref={node => props.innerRef(node)} className="progression-item-container">
       <div className="x-out" onClick={(event) => props.removeFromProgression(props.video)}>x</div>
-      <div className="progression-item" onClick={event => props.handleProgressionItemClick(props.index)}>
+      <div className="progression-item" id={`item-${props.video.id.videoId}`} onClick={event => props.handleProgressionItemClick(props.index)}>
         <img width="180px" src={props.video.snippet.thumbnails.medium.url} alt="learning video" />
         <br/>
         <div className="progression-item-title">{title}</div>

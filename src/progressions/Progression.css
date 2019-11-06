@@ -11,7 +11,7 @@
   overflow-x: scroll;
 }
 
-.progression .progression-item {
+.progression-item {
   width: 200px;
   min-width: 200px;
   border: 1px solid black;
@@ -87,5 +87,10 @@
 
 .drag-over-progression {
   border: 3px gray solid;
+  padding: 8px;
+}
+
+.item-dragging {
+  border: 3px solid gray;
   padding: 8px;
 }

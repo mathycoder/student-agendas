@@ -31,20 +31,19 @@ class NewProgressionContainer extends Component {
   handleOnDrop = (event) => {
     let video = event.dataTransfer.getData("video")
     video = JSON.parse(video)
-    this.setState({
-      ...this.state,
-      currProgression: [...this.state.currProgression, video],
-      draggedItem: {...this.state.draggedItem}
-    })
+    this.addToProgression(video)
     document.querySelector('.progression').classList.remove("drag-over-progression")
   }
 
   addToProgression = (video) => {
-    this.setState({
-      ...this.state,
-      currProgression: [...this.state.currProgression, video],
-      draggedItem: {...this.state.draggedItem}
-    })
+    const any = this.state.currProgression.find(vid => vid.id.videoId === video.id.videoId)
+    if (!any) {
+      this.setState({
+        ...this.state,
+        currProgression: [...this.state.currProgression, video],
+        draggedItem: {...this.state.draggedItem}
+      })
+    }
   }
 
   handleProgressionItemClick = index => {
@@ -79,11 +78,17 @@ class NewProgressionContainer extends Component {
     return this.state.currProgression.length > 0 ? false : true
   }
 
+  handleDNDDragStart = attributes => {
+    const {draggableId, source} = attributes
+    document.querySelector(`#item-${draggableId}`).classList.add("item-dragging")
+  }
+
   handleDNDDragEnd = result => {
     const { destination, source, draggableId } = result
+    document.querySelector(`#item-${draggableId}`).classList.remove("item-dragging")
     if (!destination) {
       return
-    } 
+    }
 
     if (destination.index !== source.index) {
       const testArray = [...this.state.currProgression]
@@ -101,7 +106,9 @@ class NewProgressionContainer extends Component {
     return (
       <div className="new-progression-container">
         <DragDropContext
-          onDragEnd={this.handleDNDDragEnd}>
+          onDragEnd={this.handleDNDDragEnd}
+          onDragStart={this.handleDNDDragStart}
+          >
           <Droppable droppableId="droppable-1" direction="horizontal">
             {(provided) => (
               <Progression
