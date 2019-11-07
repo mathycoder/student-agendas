@@ -36,7 +36,7 @@ class NewProgressionContainer extends Component {
   }
 
   addToProgression = (video) => {
-    const any = this.state.currProgression.find(vid => vid.id.videoId === video.id.videoId)
+    const any = this.state.currProgression.find(vid => vid.videoId === video.videoId)
     if (!any) {
       this.setState({
         ...this.state,

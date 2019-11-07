@@ -8,7 +8,7 @@ class Progression extends Component {
     return (
       this.props.currProgression.map((video, index) => {
         return (
-          <Draggable draggableId={video.id.videoId} index={index} key={video.id.videoId}>
+          <Draggable draggableId={video.videoId} index={index} key={video.videoId}>
             {(provided) => {
               return (
                 <div
