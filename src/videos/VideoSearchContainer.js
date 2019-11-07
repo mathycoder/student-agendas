@@ -28,7 +28,7 @@ class VideoSearchContainer extends Component {
       .then(resp => resp.json())
       .then(json => {
         this.setState({
-          videos: json.items,
+          videos: this.createVideoObjects(json.items),
           searchTerm: ""
         })
         console.log(this.createVideoObjects(json.items))
@@ -79,13 +79,15 @@ class VideoSearchContainer extends Component {
 
   createVideoObjects = (videos) => {
     return videos.map(video => {
+      const url = 'http://www.youtube.com/embed/' + video.id.videoId
       return {
         title: this.formatTitle(video.snippet.title),
         videoId: video.id.videoId,
         channelTitle: video.snippet.channelTitle,
         description: video.snippet.description,
         date: this.formatDate(video.snippet.publishedAt),
-        thumbnailUrl: video.snippet.thumbnails.medium.url
+        thumbnailUrl: video.snippet.thumbnails.medium.url,
+        url: url
       }
     })
   }
