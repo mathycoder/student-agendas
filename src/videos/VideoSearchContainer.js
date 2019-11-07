@@ -20,6 +20,8 @@ class VideoSearchContainer extends Component {
     })
   }
 
+// videos: json.items
+
   handleSubmit = (event) => {
     event.preventDefault()
     fetch(URL1 + URL2 + `&q=${this.state.searchTerm}`)
@@ -29,6 +31,7 @@ class VideoSearchContainer extends Component {
           videos: json.items,
           searchTerm: ""
         })
+        console.log(this.createVideoObjects(json.items))
       })
   }
 
@@ -57,6 +60,34 @@ class VideoSearchContainer extends Component {
         </div>
       </div>
     )
+  }
+
+  formatTitle = (unformattedTitle) => {
+    const parser = new DOMParser()
+    let title = parser.parseFromString('<!doctype html><body>' + unformattedTitle, 'text/html')
+    return title.body.textContent
+  }
+
+  formatDate = (publishedAt) => {
+    const date = new Date(publishedAt)
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    const month = MONTHS[date.getMonth()]
+    const day = date.getDate()
+    const year = date.getFullYear()
+    return `${month} ${day}, ${year}`
+  }
+
+  createVideoObjects = (videos) => {
+    return videos.map(video => {
+      return {
+        title: this.formatTitle(video.snippet.title),
+        videoId: video.id.videoId,
+        channelTitle: video.snippet.channelTitle,
+        description: video.snippet.description,
+        date: this.formatDate(video.snippet.publishedAt),
+        thumbnailUrl: video.snippet.thumbnails.medium.url
+      }
+    })
   }
 }
 
