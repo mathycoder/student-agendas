@@ -20,8 +20,6 @@ class VideoSearchContainer extends Component {
     })
   }
 
-// videos: json.items
-
   handleSubmit = (event) => {
     event.preventDefault()
     fetch(URL1 + URL2 + `&q=${this.state.searchTerm}`)
